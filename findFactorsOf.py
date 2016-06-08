@@ -11,8 +11,8 @@ Very much a work-in-progress; not guaranteed to be correct, accurate or even eff
 
 def findFactorsOf(n):
 	maxToCheck = (n / 2) + 1
-	found = []
-	i = 1
+	found = [1, n]
+	i = 3
 	incrementer = 1 if n % 2 == 0 else 2
 	while i < maxToCheck:
 		if n % i == 0:
@@ -21,5 +21,22 @@ def findFactorsOf(n):
 			print found # remove or do at end if you just want the result
 			maxToCheck = (n / i)
 		i = i + incrementer
+	return found
 
-findFactorsOf(65535)
+def isPrime(n):
+	maxToCheck = (n / 2) + 1
+	i = 3
+	if n % 2 == 0: return False
+
+	while i < maxToCheck:
+		if n % i == 0:
+			return False
+		i = i + 2
+	return True
+
+
+factors = findFactorsOf(1444141111112)
+primeFactors = []
+for num in factors[2:]:
+	if isPrime(num):
+		print num
